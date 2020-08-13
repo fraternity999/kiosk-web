@@ -56,7 +56,7 @@ export default defineConfig({
           routes: [
             {
               path: '/',
-              redirect: '/welcome',
+              redirect: '/index',
             },
             {
               path: '/welcome',
@@ -86,18 +86,8 @@ export default defineConfig({
               path: '/list',
               component: './ListTableList',
             },
-            {
-              name: '空白页面',
-              icon: 'smile',
-              path: '/test',
-              component: './Client/Test',
-            },
-            {
-              name: '空白页面',
-              icon: 'smile',
-              path: '/recharge',
-              component: './Client/Recharge',
-            },
+
+
             {
               component: './404',
             },

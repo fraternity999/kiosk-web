@@ -1,11 +1,12 @@
 import React from 'react';
-import {Descriptions, Layout, Menu, Row, Col, Modal} from "antd";
+import {Layout, Menu, Row, Col, Modal, notification} from "antd";
 import styles from './index.less';
 import imgUrl from "../../../assets/images/register.png"
 import RechargeType from "@/pages/Client/Recharge/type";
 import UserInfo from "@/pages/Client/Common/UserInfo";
 import InputAmount from "@/pages/Client/Common/InputAmount";
 import QrCode from "@/pages/Client/Common/QrCode";
+import request from '@/utils/request';
 
 const { Header, Footer, Content } = Layout;
 
@@ -15,15 +16,29 @@ class Index extends React.Component{
   state={
     visible: false,
     amountVisible:false,
-    qrCodeVisible:false
+    qrCodeVisible:false,
+    insertCardVisible:false,
+    patientInfo: {name:'',sex:'',account:''},
   }
 
   // 充值
   recharge=(e)=>{
-    //检测是否有卡
-    this.setState({
-      visible: true,
-    });
+    request
+      .get('/api/recharge/index')
+      .then(function(response) {
+        console.log(response);
+        if(response.code === 500&&response.type == "CheckCard"){
+          this.openNotification("系统提示","请先插入您的就诊卡");
+          return ;
+        }
+
+        this.setState({patientInfo:response.data,visible:true})
+
+
+      }.bind(this))
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   showAmount=()=>{
@@ -41,6 +56,13 @@ class Index extends React.Component{
     });
   }
 
+  openNotification = (message,description) => {
+    notification.open({
+      message: message,
+      description: description,
+    });
+  };
+
   componentWillUnmount() {
     this.setState = (state,callback)=>{ return; };
   }
@@ -57,7 +79,7 @@ class Index extends React.Component{
           </Header>
           <Content>
             <div className={styles.desc}>
-              <UserInfo/>
+              <UserInfo patientInfo={this.state.patientInfo}/>
             </div>
             <div className={styles.content}>
               <Row>
@@ -121,7 +143,7 @@ class Index extends React.Component{
           onOk={e => this.setState({amountVisible: false})}
           onCancel={e => this.setState({amountVisible: false})}
         >
-          <InputAmount showQrCode={this.showQrCode}/>
+          <InputAmount patientInfo={this.state.patientInfo} showQrCode={this.showQrCode}/>
         </Modal>
 
         <Modal
@@ -132,6 +154,7 @@ class Index extends React.Component{
         >
           <QrCode />
         </Modal>
+
 
       </div>
     );

@@ -19,7 +19,7 @@ class InputAmount extends React.Component{
     return(
       <div>
         <div>
-          <UserInfo/>
+          <UserInfo patientInfo={this.props.patientInfo}/>
         </div>
 
         <div className={styles.number}>

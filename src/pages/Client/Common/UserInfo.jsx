@@ -7,9 +7,9 @@ class UserInfo extends React.Component{
     return(
       <div>
         <Descriptions bordered size='default'>
-          <Descriptions.Item label={<div>姓名</div>}>Zhou Maomao</Descriptions.Item>
-          <Descriptions.Item label={<div>性别</div>}>女</Descriptions.Item>
-          <Descriptions.Item label={<div>余额</div>}>100</Descriptions.Item>
+          <Descriptions.Item label={<div>姓名</div>}>{this.props.patientInfo.name}</Descriptions.Item>
+          <Descriptions.Item label={<div>性别</div>}>{this.props.patientInfo.sex}</Descriptions.Item>
+          <Descriptions.Item label={<div>余额</div>}>{this.props.patientInfo.amount}</Descriptions.Item>
         </Descriptions>
       </div>
     );
