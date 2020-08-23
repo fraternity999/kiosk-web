@@ -5,6 +5,7 @@ import imgPb from "../../../assets/images/p_b.png"
 import imgPc from "../../../assets/images/p_c.png"
 import imgPw from "../../../assets/images/p_w.png"
 import InputAmount from "@/pages/Client/Common/InputAmount";
+import styles from './type.less';
 
 class RechargeType extends React.Component{
 
@@ -28,13 +29,30 @@ class RechargeType extends React.Component{
 
           <Col className="gutter-row" span={12}>
             <Card onClick={event => this.aliPay()}>
-              <img alt='支付宝' src={imgPa}/>
+              <Row>
+                <Col>
+                  <img alt='支付宝' src={imgPa}/>
+                </Col>
+                <Col>
+                  <div className={styles.title}>支付宝</div>
+                </Col>
+              </Row>
+
+
             </Card>
           </Col>
 
           <Col className="gutter-row" span={12}>
             <Card>
-              <img alt='银联卡' src={imgPb}/>
+              <Row>
+                <Col>
+                  <img alt='银联卡' src={imgPb}/>
+                </Col>
+                <Col>
+                  <div className={styles.title}>银联卡</div>
+                </Col>
+              </Row>
+
             </Card>
           </Col>
         </Row>
@@ -42,13 +60,29 @@ class RechargeType extends React.Component{
         <Row gutter={[16, 24]}>
           <Col className="gutter-row" span={12}>
             <Card>
-              <img alt='现金' src={imgPc}/>
+              <Row>
+                <Col>
+                  <img alt='现金' src={imgPc}/>
+                </Col>
+                <Col>
+                  <div className={styles.title}>现金</div>
+                </Col>
+              </Row>
+
             </Card>
           </Col>
 
           <Col className="gutter-row" span={12}>
             <Card>
-              <img alt='微信' src={imgPw}/>
+              <Row>
+                <Col>
+                  <img alt='微信' src={imgPw}/>
+                </Col>
+                <Col>
+                  <div className={styles.title}>微信</div>
+                </Col>
+              </Row>
+
             </Card>
           </Col>
         </Row>
