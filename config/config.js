@@ -29,12 +29,6 @@ export default defineConfig({
       component: './Client/Index',
     },
     {
-      name: '充值',
-      icon: 'smile',
-      path: '/recharge',
-      component: './Client/Recharge',
-    },
-    {
       path: '/user',
       component: '../layouts/UserLayout',
       routes: [
@@ -86,8 +80,6 @@ export default defineConfig({
               path: '/list',
               component: './ListTableList',
             },
-
-
             {
               component: './404',
             },

@@ -14,6 +14,7 @@ import UserInfo from "@/pages/Client/Common/UserInfo";
 import InputAmount from "@/pages/Client/Common/InputAmount";
 import QrCode from "@/pages/Client/Common/QrCode";
 import request from '@/utils/request';
+import RegisterCardIndex from "@/pages/Client/RegisterCard";
 
 const { Header, Footer, Content } = Layout;
 
@@ -26,8 +27,37 @@ class Index extends React.Component{
     qrCodeVisible:false,
     insertCardVisible:false,
     patientInfo: {name:'',sex:'',account:''},
-    loading:false
+    loading:false,
+    registerCardVisible:false,
   }
+
+  //办卡
+  registerCard(event) {
+    //发送读取身份证请求
+    this.setState({
+      registerCardVisible:false,
+      loading:true
+    })
+    request
+      .get('/api/recharge/qrCode')
+      .then(function(response) {
+        if(response.code != 200){
+          this.setState({
+            loading:false
+          })
+          this.openNotification("系统提示",response.message);
+          return ;
+        }
+
+      }.bind(this))
+      .catch(function(error) {
+        this.setState({
+          loading:false
+        })
+      });
+  }
+
+
 
   // 充值
   recharge=(e)=>{
@@ -60,6 +90,8 @@ class Index extends React.Component{
         })
       });
   };
+
+
 
   showAmount=()=>{
     this.setState({
@@ -176,7 +208,7 @@ class Index extends React.Component{
                 {/*</Row>*/}
                 <Row style={{marginTop:100}}>
                     <Col span={8}>
-                          <div className={styles.take}>
+                          <div className={styles.take} onClick={event => this.setState({registerCardVisible:true})}>
                             <img alt='办卡' src={imgTake}/>
                             <div className={styles.appFont}>办卡</div>
                           </div>
@@ -227,12 +259,26 @@ class Index extends React.Component{
             <QrCode patientInfo={this.state.patientInfo}/>
           </Modal>
 
+          <Modal
+            title="请扫描身份证"
+            closable={false}
+            maskClosable={false}
+            width={600}
+            visible={this.state.registerCardVisible}
+            onOk={e => this.registerCard()}
+            onCancel={e => this.setState({registerCardVisible: false})}
+          >
+            <RegisterCardIndex/>
+          </Modal>
 
         </div>
       </Spin>
 
     );
   }
+
+
+
 }
 export default Index;
 
