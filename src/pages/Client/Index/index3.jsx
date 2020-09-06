@@ -18,7 +18,7 @@ import request from '@/utils/request';
 const { Header, Footer, Content } = Layout;
 
 
-class Index extends React.Component{
+class Index3 extends React.Component{
 
   state={
     visible: false,
@@ -134,69 +134,49 @@ class Index extends React.Component{
                 <UserInfo patientInfo={this.state.patientInfo}/>
               </div>
               <div className={styles.content}>
-                {/*<Row>*/}
-                {/*  <Col span={6}>*/}
-                {/*    <div className={styles.register}>*/}
-                {/*      <div>*/}
-                {/*        <img alt='挂号' src={imgUrl}/>*/}
-                {/*        <div className={styles.appFont}>挂号</div>*/}
-                {/*      </div>*/}
-                {/*    </div>*/}
-                {/*  </Col>*/}
-                {/*  <Col span={6}>*/}
-                {/*    <div className={styles.reservation}>*/}
-                {/*      <img alt='预约' src={imgReservation}/>*/}
-                {/*      <div className={styles.appFont}>预约</div>*/}
-                {/*    </div>*/}
-                {/*    <div className={styles.take}>*/}
-                {/*      <img alt='取号' src={imgTake}/>*/}
-                {/*      <div className={styles.appFont}>取号</div>*/}
-                {/*    </div>*/}
-                {/*  </Col>*/}
-                {/*  <Col span={6}>*/}
-                {/*    <div className={styles.pay}>*/}
-                {/*      <img alt='缴费' src={imgPay}/>*/}
-                {/*      <div className={styles.appFont}>缴费</div>*/}
-                {/*    </div>*/}
-                {/*    <div className={styles.recharge} onClick={event => this.recharge(event)}>*/}
-                {/*      <img alt='充值' src={imgRecharge}/>*/}
-                {/*      <div className={styles.appFont}>充值</div>*/}
-                {/*    </div>*/}
-                {/*  </Col>*/}
-                {/*  <Col span={6}>*/}
-                {/*    <div className={styles.inquire}>*/}
-                {/*      <img alt='查询' src={imgInquire}/>*/}
-                {/*      <div className={styles.appFont}>查询</div>*/}
-                {/*    </div>*/}
-                {/*    <div className={styles.print}>*/}
-                {/*      <img alt='打印' src={imgPrint}/>*/}
-                {/*      <div className={styles.appFont}>打印</div>*/}
-                {/*    </div>*/}
-                {/*  </Col>*/}
-                {/*</Row>*/}
-                <Row style={{marginTop:100}}>
-                    <Col span={8}>
-                          <div className={styles.take}>
-                            <img alt='办卡' src={imgTake}/>
-                            <div className={styles.appFont}>办卡</div>
-                          </div>
-                    </Col>
-                  <Col span={8}>
-                        <div className={styles.recharge} onClick={event => this.recharge(event)}>
-                          <img alt='充值' src={imgRecharge}/>
-                          <div className={styles.appFont}>充值</div>
-                        </div>
+                <Row>
+                  <Col span={6}>
+                    <div className={styles.register}>
+                      <div>
+                        <img alt='挂号' src={imgUrl}/>
+                        <div className={styles.appFont}>挂号</div>
+                      </div>
+                    </div>
                   </Col>
-                  <Col span={8}>
-                        <div className={styles.pay}>
-                          <img alt='住院充值' src={imgPay}/>
-                          <div className={styles.appFont}>住院充值</div>
-                        </div>
+                  <Col span={6}>
+                    <div className={styles.reservation}>
+                      <img alt='预约' src={imgReservation}/>
+                      <div className={styles.appFont}>预约</div>
+                    </div>
+                    <div className={styles.take}>
+                      <img alt='取号' src={imgTake}/>
+                      <div className={styles.appFont}>取号</div>
+                    </div>
+                  </Col>
+                  <Col span={6}>
+                    <div className={styles.pay}>
+                      <img alt='缴费' src={imgPay}/>
+                      <div className={styles.appFont}>缴费</div>
+                    </div>
+                    <div className={styles.recharge} onClick={event => this.recharge(event)}>
+                      <img alt='充值' src={imgRecharge}/>
+                      <div className={styles.appFont}>充值</div>
+                    </div>
+                  </Col>
+                  <Col span={6}>
+                    <div className={styles.inquire}>
+                      <img alt='查询' src={imgInquire}/>
+                      <div className={styles.appFont}>查询</div>
+                    </div>
+                    <div className={styles.print}>
+                      <img alt='打印' src={imgPrint}/>
+                      <div className={styles.appFont}>打印</div>
+                    </div>
                   </Col>
                 </Row>
               </div>
             </Content>
-            <Footer>西安新能技术有限公司</Footer>
+            <Footer>Footer</Footer>
           </Layout>
 
           <Modal
@@ -234,5 +214,5 @@ class Index extends React.Component{
     );
   }
 }
-export default Index;
+export default Index3;
 
